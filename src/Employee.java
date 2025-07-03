@@ -8,12 +8,12 @@ public class Employee {
     private String PAYE;
     private boolean studentLoan = false;
     private int kiwiSaver;
-    private int rate;
+    private double rate;
     private double hours = 0;
 
     private double gross;
 
-    public Employee(String name, String PAYE, boolean studentLoan, int kiwiSaver, int rate) {
+    public Employee(String name, String PAYE, boolean studentLoan, int kiwiSaver, double rate) {
         this.name = name;
         this.PAYE = PAYE;
         this.studentLoan = studentLoan;
@@ -33,6 +33,10 @@ public class Employee {
         this.gross = result;
     }
 
+    public double getGross() {
+        return this.gross;
+    }
+    
     public String getName() {
         return name;
     }
@@ -49,7 +53,7 @@ public class Employee {
         return kiwiSaver;
     }   
 
-    public int getRate() {
+    public double getRate() {
         return rate;
     }
 }

@@ -21,7 +21,7 @@ public class Main {
             } else {
                 temp = false;
             }
-            Employee employee = new Employee(data[0], data[1], temp, Integer.valueOf(data[3]), Integer.valueOf(data[4]));
+            Employee employee = new Employee(data[0], data[1], temp, Integer.valueOf(data[3]), Double.valueOf(data[4]));
             employees.add(employee);
         }
 
@@ -40,9 +40,10 @@ public class Main {
         for (Employee n : employees) {
             boolean valid = false;
             double hours = 0;
-            
+
             while (!valid) {
                 try {
+                    System.out.println("Type in the hours for " + n.getName());
                     hours = Double.valueOf(Utils.scanner.nextLine());
                     Main.checkIfNumberIsValid(hours);
                     valid = true;
@@ -50,10 +51,18 @@ public class Main {
                     System.out.println("Number must be greater than 0, try again");
                 }
             }
-
             n.setHours(hours);
             n.calculateGross();
         }
+
+        // Calculates after tax result
+        
+        for (Employee n : employees) {
+
+            double gross = n.getGross();
+            System.out.println(gross);
+        }
+
     }
 
     private static void checkIfNumberIsValid(double n) {
