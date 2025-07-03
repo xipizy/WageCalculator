@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-// The PAYE Table only contains data between $1100 and $1360
 public class Main {
     public static void main(String[] args) {
         List<String> PAYEdata = Utils.readPAYE();
