@@ -5,12 +5,14 @@ public class Employee {
     private String PAYE;
     private boolean studentLoan = false;
     private int kiwiSaver;
+    private int rate;
 
-    public Employee(String name, String PAYE, boolean studentLoan, int kiwiSaver) {
+    public Employee(String name, String PAYE, boolean studentLoan, int kiwiSaver, int rate) {
         this.name = name;
         this.PAYE = PAYE;
         this.studentLoan = studentLoan;
         this.kiwiSaver = kiwiSaver;
+        this.rate = rate;
     }
 
     public String getName() {
@@ -28,4 +30,8 @@ public class Employee {
     public int getKiwiSaver() {
         return kiwiSaver;
     }   
+
+    public int getRate() {
+        return rate;
+    }
 }

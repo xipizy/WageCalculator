@@ -33,4 +33,9 @@ public class Utils {
 
     return result;
     }
+
+    public static String[] convertData(String line) {
+        String[] result = line.split(",");
+        return result;
+    }
 }

@@ -1,13 +1,26 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // The PAYE Table only contains data between $1100 and $1320
 public class Main {
     public static void main(String[] args) {
-
         List<String> PAYEdata = Utils.readPAYE();
-        List<String> EmployeeData = Utils.readEmployee();
-        System.out.println(EmployeeData);
+        List<String> employeeData = Utils.readEmployee();
+        List<Employee> employees = new ArrayList<>();
+
+        // Create new employee instances based on EmployeeData
+        for (String n :  employeeData) {
+            boolean temp;
+            String[] data = Utils.convertData(n);
+            if (data[2].equals("true")) {
+                temp = true;
+            } else {
+                temp = false;
+            }
+            Employee employee = new Employee(data[0], data[1], temp, Integer.valueOf(data[3]), Integer.valueOf(data[4]));
+            employees.add(employee);
+        }
     }
 }
