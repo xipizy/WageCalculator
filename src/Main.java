@@ -60,8 +60,49 @@ public class Main {
         for (Employee n : employees) {
             double gross = n.getGross();
             int grossRounded = (int) Math.floor(gross);
+            String grossRoundedString = String.valueOf(grossRounded);
+            List<String> data = PAYE.get(grossRoundedString);
+            
+            // Getting PAYEtax from HashMap
+            String PAYEtax;
+            if (n.getPAYE().equals("M")) {
+                PAYEtax = data.get(0);
+            } else {
+                PAYEtax = data.get(1);
+            }
+            n.setPAYEtax(PAYEtax);
+
+
+            // Getting Student Loan
+            String studentLoanTax = "0";
+            if (n.isStudentLoan()) {
+                studentLoanTax = data.get(2);
+            }
+            n.setStudentLoanTax(studentLoanTax);
+
+            // Getting Kiwi Saver
+            String kiwiSaverTax;
+            switch (n.getKiwiSaverCode()) {
+                case 3:
+                    kiwiSaverTax = data.get(3);
+                case 4:
+                    kiwiSaverTax = data.get(4);
+                case 6:
+                    kiwiSaverTax = data.get(5);
+                case 8:
+                    kiwiSaverTax = data.get(6);
+                case 10:
+                    kiwiSaverTax = data.get(7);
+                default:
+                    kiwiSaverTax = "0";
+            }
+            n.setKiwiSaver(kiwiSaverTax);
+
+            // Calculates after tax
             
         }
+
+        
 
     }
 

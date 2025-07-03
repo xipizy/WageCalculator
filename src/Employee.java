@@ -7,18 +7,22 @@ public class Employee {
     private String name;
     private String PAYE;
     private boolean studentLoan = false;
-    private int kiwiSaver;
+    private int kiwiSaverCode;
     private double rate;
     private double hours = 0;
     private String IRD;
 
     private double gross;
+    private String PAYEtax;
+    private String kiwiSaver;
+    private String studentLoanTax;
+    private String totalMoney;
 
     public Employee(String name, String PAYE, boolean studentLoan, int kiwiSaver, double rate, String IRD) {
         this.name = name;
         this.PAYE = PAYE;
         this.studentLoan = studentLoan;
-        this.kiwiSaver = kiwiSaver;
+        this.kiwiSaverCode = kiwiSaver;
         this.rate = rate;
         this.IRD = IRD;
     }
@@ -33,6 +37,39 @@ public class Employee {
         temp = temp.setScale(2, RoundingMode.HALF_UP);
         result = temp.doubleValue();
         this.gross = result;
+    }
+
+    
+    public String getTotalMoney() {
+        return totalMoney;
+    }
+
+    public void setTotalMoney(String totalMoney) {
+        this.totalMoney = totalMoney;
+    }
+
+    public String getStudentLoanTax() {
+        return studentLoanTax;
+    }
+
+    public void setStudentLoanTax(String studentLoanTax) {
+        this.studentLoanTax = studentLoanTax;
+    }
+
+    public void setPAYEtax(String n) {
+        this.PAYEtax = n;
+    }
+
+    public String getPAYEtax() {
+        return this.PAYEtax;
+    }
+
+    public void setKiwiSaver(String n) {
+        this.kiwiSaver = n;
+    }
+
+    public String getKiwiSaver() {
+        return this.kiwiSaver;
     }
 
     public String getIRD() {
@@ -54,8 +91,8 @@ public class Employee {
         return studentLoan;
     }
 
-    public int getKiwiSaver() {
-        return kiwiSaver;
+    public int getKiwiSaverCode() {
+        return kiwiSaverCode;
     }   
 
     public double getRate() {
