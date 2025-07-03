@@ -10,15 +10,17 @@ public class Employee {
     private int kiwiSaver;
     private double rate;
     private double hours = 0;
+    private String IRD;
 
     private double gross;
 
-    public Employee(String name, String PAYE, boolean studentLoan, int kiwiSaver, double rate) {
+    public Employee(String name, String PAYE, boolean studentLoan, int kiwiSaver, double rate, String IRD) {
         this.name = name;
         this.PAYE = PAYE;
         this.studentLoan = studentLoan;
         this.kiwiSaver = kiwiSaver;
         this.rate = rate;
+        this.IRD = IRD;
     }
 
     public void setHours(double n) {
@@ -33,10 +35,13 @@ public class Employee {
         this.gross = result;
     }
 
+    public String getIRD() {
+        return IRD;
+    }
     public double getGross() {
         return this.gross;
     }
-    
+
     public String getName() {
         return name;
     }

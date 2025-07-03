@@ -21,7 +21,7 @@ public class Main {
             } else {
                 temp = false;
             }
-            Employee employee = new Employee(data[0], data[1], temp, Integer.valueOf(data[3]), Double.valueOf(data[4]));
+            Employee employee = new Employee(data[0], data[1], temp, Integer.valueOf(data[3]), Double.valueOf(data[4]), data[5]);
             employees.add(employee);
         }
 
@@ -58,9 +58,9 @@ public class Main {
         // Calculates after tax result
         
         for (Employee n : employees) {
-
             double gross = n.getGross();
-            System.out.println(gross);
+            int grossRounded = (int) Math.floor(gross);
+            
         }
 
     }
