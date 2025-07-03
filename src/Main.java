@@ -2,6 +2,10 @@ package src;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -115,6 +119,16 @@ public class Main {
         }
 
         // Printing table to console
+        for (int i = 0; i < 2; i++) {
+            System.out.println();
+        }
+        // Gets starting Monday and Saturday of current week
+        LocalDate today = LocalDate.now();
+        LocalDate monday = today.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+        LocalDate saturday = today.with(TemporalAdjusters.nextOrSame(DayOfWeek.SATURDAY));
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yy");
+
+        System.out.println(monday.format(fmt) + " - " + saturday.format(fmt));
         System.out.printf("%-12s %-12s %-12s %-12s %-14s %-12s\n", "NAME", "IRD", "GROSS", "PAYE", "KIWI SAVER", "TOTAL");
         System.out.println("--------------------------------------------------------------------------");
         for (Employee n : employees) {
