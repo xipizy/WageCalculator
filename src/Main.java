@@ -36,6 +36,29 @@ public class Main {
             PAYE.putIfAbsent(gross, otherValues);
         }
 
-        
+        // Asking user for hours, if negative, throws exception.
+        for (Employee n : employees) {
+            boolean valid = false;
+            double hours = 0;
+            
+            while (!valid) {
+                try {
+                    hours = Double.valueOf(Utils.scanner.nextLine());
+                    Main.checkIfNumberIsValid(hours);
+                    valid = true;
+                } catch (NegativeHoursException e) {
+                    System.out.println("Number must be greater than 0, try again");
+                }
+            }
+
+            n.setHours(hours);
+            n.calculateGross();
+        }
+    }
+
+    private static void checkIfNumberIsValid(double n) {
+        if (n < 0) {
+            throw new NegativeHoursException();
+        }
     }
 }
