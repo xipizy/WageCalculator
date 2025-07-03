@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-// The PAYE Table only contains data between $1100 and $1320
+// The PAYE Table only contains data between $1100 and $1360
 public class Main {
     public static void main(String[] args) {
         List<String> PAYEdata = Utils.readPAYE();
@@ -112,7 +112,14 @@ public class Main {
             BigDecimal bd = new BigDecimal(totalMoney);
             bd = bd.setScale(2, RoundingMode.HALF_UP);
             totalMoney = bd.doubleValue();
-            System.out.println(totalMoney);
+            n.setTotalMoney(String.valueOf(totalMoney));
+        }
+
+        // Printing table to console
+        System.out.printf("%-12s %-12s %-12s %-12s %-14s %-12s\n", "NAME", "IRD", "GROSS", "PAYE", "KIWI SAVER", "TOTAL");
+        System.out.println("--------------------------------------------------------------------------");
+        for (Employee n : employees) {
+            System.out.printf("%-12s %-12s %-12s %-12s %-14s %-12s\n", n.getName(), n.getIRD(), String.valueOf(n.getGross()), n.getPAYEtax(), n.getKiwiSaver(), n.getTotalMoney());
         }
     }
 
