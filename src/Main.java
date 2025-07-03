@@ -1,5 +1,7 @@
 package src;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,6 +63,7 @@ public class Main {
             double gross = n.getGross();
             int grossRounded = (int) Math.floor(gross);
             String grossRoundedString = String.valueOf(grossRounded);
+            grossRoundedString = grossRoundedString + ".00";
             List<String> data = PAYE.get(grossRoundedString);
             
             // Getting PAYEtax from HashMap
@@ -85,25 +88,32 @@ public class Main {
             switch (n.getKiwiSaverCode()) {
                 case 3:
                     kiwiSaverTax = data.get(3);
+                    break;
                 case 4:
                     kiwiSaverTax = data.get(4);
+                    break;
                 case 6:
                     kiwiSaverTax = data.get(5);
                 case 8:
                     kiwiSaverTax = data.get(6);
+                    break;
                 case 10:
                     kiwiSaverTax = data.get(7);
+                    break;
                 default:
                     kiwiSaverTax = "0";
             }
             n.setKiwiSaver(kiwiSaverTax);
 
             // Calculates after tax
-            
+            double totalMoney = n.getGross() - Double.valueOf(PAYEtax) - Double.valueOf(studentLoanTax) - Double.valueOf(kiwiSaverTax);
+
+            // Removes 0.099999999 if present
+            BigDecimal bd = new BigDecimal(totalMoney);
+            bd = bd.setScale(2, RoundingMode.HALF_UP);
+            totalMoney = bd.doubleValue();
+            System.out.println(totalMoney);
         }
-
-        
-
     }
 
     private static void checkIfNumberIsValid(double n) {
